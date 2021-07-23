@@ -6,18 +6,18 @@ import time
 
 
 def get_latest_crypto_price(coin):
-    url = 'https://www.google.com/search?q=' + (coin) + 'price'
+    url = 'https://www.google.com/search?q=' + coin + 'price'
     # make a request to the website
-    HTML = requests.get(url)
-    # Parsse the HTML
-    soup = BeautifulSoup(HTML.text, 'html.parser')
+    htm = requests.get(url)
+    # Parse the HTML
+    soup = BeautifulSoup(htm.text, 'html.parser')
     # find the current price
-    texti = soup.find('div', attrs={
-        'class': 'BNeawe iBp4i AP7Wnd'
+    text = soup.find('div', attrs={
+        'class': 'BNew iBp4i AP7Wnd'
     }).find({
-        'div': 'BNeawe iBp4i AP7Wnd'
+        'div': 'BNew iBp4i AP7Wnd'
     }).text
-    return texti
+    return text
 
 
 price = get_latest_crypto_price('bitcoin')
